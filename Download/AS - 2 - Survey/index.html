@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Survey Form</title>
+<style>
+/* Styling the Body element */
+body {
+background-color: #05c46b;
+font-family: Verdana, sans-serif;
+text-align: center;
+}
+
+/* Styling the Form */
+form {
+background-color: #fff;
+max-width: 500px;
+margin: 50px auto;
+padding: 30px 20px;
+box-shadow: 2px 5px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Styling form-control Class */
+.form-control {
+text-align: left;
+margin-bottom: 25px;
+}
+
+/* Styling form-control Label */
+.form-control label {
+display: block;
+margin-bottom: 10px;
+}
+
+/* Styling form-control input, select, textarea */
+.form-control input,
+.form-control select,
+.form-control textarea {
+border: 1px solid #777;
+border-radius: 2px;
+font-family: inherit;
+padding: 10px;
+display: block;
+width: 95%;
+}
+
+/* Styling form-control Radio button and Checkbox */
+.form-control input[type="radio"],
+.form-control input[type="checkbox"] {
+display: inline-block;
+width: auto;
+}
+
+/* Styling Button */
+button {
+background-color: #05c46b;
+border: 1px solid #777;
+border-radius: 2px;
+font-family: inherit;
+font-size: 21px;
+display: block;
+width: 20%;
+margin: 0 auto;
+cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+<h1>Survey Form</h1>
+
+<!-- Create Form -->
+<form id="form">
+
+<!-- Details -->
+<div class="form-control">
+<label for="name" id="label-name">Name</label>
+<input type="text" id="name" name="Name" placeholder="Enter your name" required />
+</div>
+
+<div class="form-control">
+<label for="email" id="label-email">Email</label>
+<input type="email" id="email" name="Email" placeholder="Enter your email" required />
+</div>
+
+<div class="form-control">
+<label for="age" id="label-age">Age</label>
+<input type="number" id="age" name="Age" placeholder="Enter your age" required />
+</div>
+
+<div class="form-control">
+<label for="role" id="label-role">Which option best describes you?</label>
+<select name="Role" id="role" required>
+<option value="null">--Select--</option>
+<option value="student">Student</option>
+<option value="intern">Intern</option>
+<option value="professional">Professional</option>
+<option value="other">Other</option>
+</select>
+</div>
+
+<div class="form-control">
+<label>Would you recommend this to a friend?</label>
+<label for="recommend-yes">
+<input type="radio" id="recommend-yes" name="Recommend" value="Yes" required />Yes
+</label>
+<label for="recommend-no">
+<input type="radio" id="recommend-no" name="Recommend" value="No" required />No
+</label>
+<label for="recommend-maybe">
+<input type="radio" id="recommend-maybe" name="Recommend" value="Maybe" required />Maybe
+</label>
+</div>
+
+<div class="form-control">
+<label>Languages and Frameworks known
+<small>(Check all that apply)</small>
+</label>
+<label for="inp-1">
+<input type="checkbox" id="inp-1" name="Languages" value="C" />C
+</label>
+<label for="inp-2">
+<input type="checkbox" id="inp-2" name="Languages" value="C++" />C++
+</label>
+<label for="inp-3">
+<input type="checkbox" id="inp-3" name="Languages" value="C#" />C#
+</label>
+<label for="inp-4">
+<input type="checkbox" id="inp-4" name="Languages" value="Java" />Java
+</label>
+<label for="inp-5">
+<input type="checkbox" id="inp-5" name="Languages" value="Python" />Python
+</label>
+<label for="inp-6">
+<input type="checkbox" id="inp-6" name="Languages" value="JavaScript" />JavaScript
+</label>
+<label for="inp-7">
+<input type="checkbox" id="inp-7" name="Languages" value="React" />React
+</label>
+<label for="inp-8">
+<input type="checkbox" id="inp-8" name="Languages" value="Angular" />Angular
+</label>
+<label for="inp-9">
+<input type="checkbox" id="inp-9" name="Languages" value="Django" />Django
+</label>
+<label for="inp-10">
+<input type="checkbox" id="inp-10" name="Languages" value="Spring" />Spring
+</label>
+</div>
+
+<div class="form-control">
+<label for="comment">Any comments or suggestions</label>
+<textarea name="Comment" id="comment" placeholder="Enter your comment here" required></textarea>
+</div>
+
+<button type="submit" value="submit">Submit</button>
+</form>
+
+<script>
+// Get the form element
+const form = document.getElementById('form');
+
+// Add an event listener to handle form submission
+form.addEventListener('submit', function(event) {
+// Prevent the default form submission
+event.preventDefault();
+
+// Display a confirmation message
+alert('Form submitted successfully!');
+
+// Clear the form
+form.reset();
+});
+</script>
+</body>
+</html>

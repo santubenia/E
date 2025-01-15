@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Table with Checkbox Selection</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Static Table with Checkbox Selection</h2>
+    <p>Click the checkbox to select or de-select. Use the radio buttons to switch between single and multiple selection modes.</p>
+
+    <div>
+        <span>Select Mode:</span>
+        <label>
+            <input type="radio" name="selectMode" value="single" onchange="updateSelection()"> Single
+        </label>
+        <label>
+            <input type="radio" name="selectMode" value="multiple" onchange="updateSelection()"> Multiple
+        </label>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th><input type="checkbox" id="selectAll" disabled onchange="selectAllRows(this)"></th>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Age</th>
+                <th>Marks Scored</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><input type="checkbox" class="selectRow" onchange="checkRowSelection(this)"></td>
+                <td>001</td>
+                <td>John Doe</td>
+                <td>20</td>
+                <td>85</td>
+                <td>Male</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="selectRow" onchange="checkRowSelection(this)"></td>
+                <td>002</td>
+                <td>Jane Smith</td>
+                <td>22</td>
+                <td>92</td>
+                <td>Female</td>
+            </tr>
+            <tr>
+                <td><input type="checkbox" class="selectRow" onchange="checkRowSelection(this)"></td>
+                <td>003</td>
+                <td>Bob Johnson</td>
+                <td>19</td>
+                <td>78</td>
+                <td>Male</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <script>
+
+        // Event listener for select mode radio buttons
+        function updateSelection() {
+            let checkboxes = document.getElementsByClassName('selectRow');
+            for (let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = false;
+            }
+            document.getElementById('selectAll').checked = false; // Uncheck table head checkbox
+            selectMode = document.querySelector('input[name="selectMode"]:checked').value;
+
+            // Enable or disable the table head checkbox based on selectMode
+            document.getElementById('selectAll').disabled = (selectMode === "single");
+        }
+
+        function selectAllRows(selectAllCheckbox) {
+            let checkboxes = document.getElementsByClassName('selectRow');
+            for (let i = 0; i < checkboxes.length; i++) {
+                checkboxes[i].checked = selectAllCheckbox.checked;
+            }
+        }
+
+        function checkRowSelection(checkboxElem) {
+            if (selectMode === "single") {
+                let checkboxes = document.getElementsByClassName('selectRow');
+                for (let i = 0; i < checkboxes.length; i++) {
+                    if (checkboxes[i] !== checkboxElem) {
+                        checkboxes[i].checked = false;
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
